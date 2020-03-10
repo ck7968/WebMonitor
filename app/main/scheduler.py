@@ -82,6 +82,7 @@ def monitor(id, type):
                 last_content = last.content
                 content = get_content(url, is_chrome, selector_type, selector,
                                       regular_expression, headers)
+                status = '成功执行但未监测到变化 当前值:' + content
                 if is_changed(rule, content, last_content):
                     msg = wraper_msg(content, url)
                     send_message(msg, name, mail, wechat)
@@ -100,7 +101,6 @@ def monitor(id, type):
                     task_id=id, task_type=type).first()
                 if not last:
                     last = Content(id, 'rss')
-
                 last_guid = last.content
                 item = get_rss_content(url)
                 if item['guid'] != last_guid:
