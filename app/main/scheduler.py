@@ -101,6 +101,7 @@ def monitor(id, type):
                     task_id=id, task_type=type).first()
                 if not last:
                     last = Content(id, 'rss')
+                    
                 last_guid = last.content
                 item = get_rss_content(url)
                 if item['guid'] != last_guid:
