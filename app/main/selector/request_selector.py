@@ -40,7 +40,8 @@ class RequestsSelector(FatherSelector):
         if len(res) != 0:
             return res[0]
         else:
-            raise Exception('无法获取文本信息')
+#            raise Exception('无法获取文本信息')
+            return '无法获取文本信息'
 
     def get_by_css(self, url, xpath, headers=None):
         html = self.get_html(url, headers)
@@ -49,7 +50,8 @@ class RequestsSelector(FatherSelector):
         if len(res) != 0:
             return res[0]
         else:
-            raise Exception('无法获取文本信息')
+#            raise Exception('无法获取文本信息')
+            return '无法获取文本信息'
 
     def get_by_json(self, url, xpath, headers=None):
         html = self.get_html(url, headers)
@@ -64,4 +66,5 @@ class RequestsSelector(FatherSelector):
             if len(res) != 0:
                 return res[0]
         else:
-            raise Exception('无法获取文本信息')
+#            raise Exception('无法获取文本信息')
+            return '无法获取文本信息'

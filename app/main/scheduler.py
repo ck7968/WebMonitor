@@ -131,6 +131,7 @@ def monitor(id, type):
                     db.session.commit()
                 elif status_code == 2:
                     status = '监测到变化，且命中规则，最新值为{}'.format(content)
+                if is_changed(rule, content, last_content):
                     msg = wraper_msg(content, url)
                     send_message(msg, name, mail, wechat, pushover)
                     last.content = content
@@ -155,7 +156,7 @@ def monitor(id, type):
                                                task_type=type).first()
                 if not last:
                     last = Content(id, 'rss')
-
+                    
                 last_guid = last.content
                 item = get_rss_content(url)
                 if item['guid'] != last_guid:
