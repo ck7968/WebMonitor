@@ -119,6 +119,7 @@ def monitor(id, type):
                 last_content = last.content
                 content = get_content(url, is_chrome, selector_type, selector,
                                       regular_expression, headers)
+                status = '成功执行但未监测到变化,当前值为{}'.format(content)
                 global_content = content
                 status_code = is_changed(rule, content, last_content)
                 logger.info(
